@@ -1,5 +1,6 @@
 from django.db import models
 
+# Create your models here
 class Proveedor(models.Model):
     nombre = models.CharField(max_length=100)
     direccion = models.CharField(max_length=200)
@@ -14,6 +15,7 @@ class Producto(models.Model):
     proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE)
     cantidad_disponible = models.PositiveIntegerField(default=0)
     precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha_vencimiento = models.DateField()
 
     def __str__(self):
         return self.nombre
