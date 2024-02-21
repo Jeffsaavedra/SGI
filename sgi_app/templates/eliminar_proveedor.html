@@ -1,17 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar Proveedor</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'sgi_app/styles.css' %}">
 </head>
 <body>
-    <h1>Eliminar Proveedor</h1>
-    <p>¿Estás seguro de que deseas eliminar el proveedor "{{ proveedor.nombre }}"?</p>
-    <form action="{% url 'eliminar_proveedor' proveedor.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Eliminar</button>
-    </form>
-    <a href="{% url 'lista_proveedores' %}">Cancelar</a>
+    <div class="container">
+        <h1>Eliminar Proveedor</h1>
+        <p>¿Estás seguro de que deseas eliminar el proveedor "{{ proveedor.nombre }}"?</p>
+        <form action="{% url 'eliminar_proveedor' proveedor.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Eliminar</button>
+            <h1></h1>
+        </form>
+        <a href="{% url 'lista_proveedores' %}"><button>Cancelar</button></a>
+        <h1></h1>
+    </div>
 </body>
 </html>

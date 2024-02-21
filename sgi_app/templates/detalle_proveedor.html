@@ -1,17 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle de Proveedor</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'sgi_app/styles.css' %}">
 </head>
 <body>
-    <h1>Detalle de Proveedor</h1>
-    <p><strong>Nombre:</strong> {{ proveedor.nombre }}</p>
-    <p><strong>Dirección:</strong> {{ proveedor.direccion }}</p>
-    <p><strong>Teléfono:</strong> {{ proveedor.telefono }}</p>
-    <a href="{% url 'actualizar_proveedor' proveedor.id %}">Actualizar</a>
-    <a href="{% url 'eliminar_proveedor' proveedor.id %}">Eliminar</a>
-    <a href="{% url 'lista_proveedores' %}">Volver</a>
+    <div class="container">
+        <h1>Detalle de Proveedor</h1>
+        <p><strong>Nombre:</strong> {{ proveedor.nombre }}</p>
+        <p><strong>Dirección:</strong> {{ proveedor.direccion }}</p>
+        <p><strong>Teléfono:</strong> {{ proveedor.telefono }}</p>
+        <a href="{% url 'actualizar_proveedor' proveedor.id %}"><button>Actualizar</button></a>
+        <a href="{% url 'eliminar_proveedor' proveedor.id %}"><button>Eliminar</button></a>
+        <a href="{% url 'lista_proveedores' %}"><button>Volver</button></a>
+    </div>
 </body>
 </html>

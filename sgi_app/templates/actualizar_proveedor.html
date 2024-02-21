@@ -1,16 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Proveedor</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'sgi_app/styles.css' %}">
 </head>
 <body>
-    <h1>Actualizar Proveedor</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Actualizar proveedor</button>
-    </form>
+    <div class="container">
+        <h1>Actualizar Proveedor</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Actualizar proveedor</button>
+            <button href="{% url 'lista_proveedores' %}">Volver</button>
+        </form>
+    </div>
 </body>
 </html>

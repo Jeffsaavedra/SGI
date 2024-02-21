@@ -1,17 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Proveedores</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'sgi_app/styles.css' %}">
 </head>
 <body>
-    <h1>Lista de Proveedores</h1>
-    <ul>
-        {% for proveedor in proveedores %}
-            <li>{{ proveedor.nombre }} <a href="{% url 'detalle_proveedor' proveedor.id %}">Ver Detalle</a></li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'crear_proveedor' %}">Crear Proveedor</a>
+    <div class="container3">
+        <h1>Lista de Proveedores</h1>
+    </div>
+    <h1></h1>
+    <div class="container2">
+        <ul>
+            {% for proveedor in proveedores %}
+                <li>{{ proveedor.nombre }} <a href="{% url 'detalle_proveedor' proveedor.id %}"><button>Detalle</button></a></li>
+                <h1></h1>
+            {% endfor %}
+        </ul>
+    </div>
+    <h1>
+    <div class="container">
+        <a href="{% url 'crear_proveedor' %}"><button>Crear Proveedor</button></a>
+        <a href="{% url 'index' %}"><button>Volver</button></a>
+    </div>
 </body>
 </html>
