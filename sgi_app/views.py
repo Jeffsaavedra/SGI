@@ -10,19 +10,20 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import status
 from django.http import Http404
-#------------------------------->>>>>>>>>>>>VISTAS PROVEEDOR<<<<<<<<<-----------------------------------    
-# Vista para crear proveedor
+
+# ------------------------------->>>>>>>>>>>>VISTAS PROVEEDOR<<<<<<<<<-----------------------------------
+# Vista para listar y crear proveedores
 class ProveedorListCreate(generics.ListCreateAPIView):
     queryset = Proveedor.objects.all()
     serializer_class = ProveedorSerializer
     permission_classes = [IsAuthenticated]
     
-#Vista para  actualizar y eliminar proveedor
+# Vista para ver, actualizar y eliminar un proveedor
 class ProveedorRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Proveedor.objects.all()
     serializer_class = ProveedorSerializer
 
-#vista detalle para proveedor
+# Vista para obtener detalles de un proveedor
 class ProveedorDetail(APIView):
     def get_object(self, pk):
         try:
@@ -48,52 +49,55 @@ class ProveedorDetail(APIView):
         proveedor.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
-# vistas renderizadas para templates de proveedor
-
+# Vistas renderizadas para templates de proveedor
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Proveedor
 from .forms import ProveedorForm
 
+# Vista para mostrar la lista de proveedores
 def lista_proveedores(request):
     proveedores = Proveedor.objects.all()
     return render(request, 'lista_proveedores.html', {'proveedores': proveedores})
 
+# Vista para ver los detalles de un proveedor
 def detalle_proveedor(request, pk):
     proveedor = get_object_or_404(Proveedor, pk=pk)
     return render(request, 'detalle_proveedor.html', {'proveedor': proveedor})
 
+# Vista para crear un nuevo proveedor
 class CrearProveedor(CreateView):
     model = Proveedor
     form_class = ProveedorForm
     template_name = 'crear_proveedor.html'
     success_url = '/proveedores/'
 
+# Vista para actualizar un proveedor existente
 class ActualizarProveedor(UpdateView):
     model = Proveedor
     form_class = ProveedorForm
     template_name = 'actualizar_proveedor.html'
     success_url = '/proveedores/'
 
+# Vista para eliminar un proveedor existente
 class EliminarProveedor(DeleteView):
     model = Proveedor
     template_name = 'eliminar_proveedor.html'
     success_url = '/proveedores/'
 
-
-#------------------------------->>>>>>>>>>>>VISTAS PRODUCTO<<<<<<<<<-----------------------------------    
-# Vista para crear producto
+# ------------------------------->>>>>>>>>>>>VISTAS PRODUCTO<<<<<<<<<-----------------------------------
+# Vista para listar y crear productos
 class ProductoListCreate(generics.ListCreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
     permission_classes = [IsAuthenticated]
 
-#Vista para  actualizar y eliminar producto
+# Vista para ver, actualizar y eliminar un producto
 class ProductoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
 
-#vista detalle para producto 
+# Vista para obtener detalles de un producto
 class ProductoDetail(APIView):
     def get_object(self, pk):
         try:
@@ -125,17 +129,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto
 from .forms import ProductoForm
 
-        # Vista para mostrar la lista de productos
+# Vista para mostrar la lista de productos
 def lista_productos(request):
     productos = Producto.objects.all()
     return render(request, 'lista_productos.html', {'productos': productos})
 
-        # Vista para ver los detalles de un producto
+# Vista para ver los detalles de un producto
 def detalle_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
     return render(request, 'detalle_producto.html', {'producto': producto})
 
-        # Vista para crear un nuevo producto
+# Vista para crear un nuevo producto
 def crear_producto(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST)
@@ -146,7 +150,7 @@ def crear_producto(request):
         form = ProductoForm()
     return render(request, 'crear_producto.html', {'form': form})
 
-        # Vista para actualizar un producto existente
+# Vista para actualizar un producto existente
 def actualizar_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
     if request.method == 'POST':
@@ -158,7 +162,7 @@ def actualizar_producto(request, pk):
         form = ProductoForm(instance=producto)
     return render(request, 'actualizar_producto.html', {'form': form})
 
-        # Vista para eliminar un producto existente
+# Vista para eliminar un producto existente
 def eliminar_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
     if request.method == 'POST':
@@ -166,20 +170,19 @@ def eliminar_producto(request, pk):
         return redirect('lista_productos')
     return render(request, 'eliminar_producto.html', {'producto': producto})
 
-
-#------------------------------->>>>>>>>>>>>VISTAS PEDIDO<<<<<<<<<-----------------------------------    
-# Vista para crear pedido
+# ------------------------------->>>>>>>>>>>>VISTAS PEDIDO<<<<<<<<<-----------------------------------
+# Vista para listar y crear pedidos
 class PedidoListCreate(generics.ListCreateAPIView):
     queryset = Pedido.objects.all()
     serializer_class = PedidoSerializer
     permission_classes = [IsAuthenticated]
 
-#Vista para  actualizar y eliminar
+# Vista para ver, actualizar y eliminar un pedido
 class PedidoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Pedido.objects.all()
     serializer_class = PedidoSerializer
 
-#vista detalle para pedido
+# Vista para obtener detalles de un pedido
 class PedidoDetail(APIView):
     def get_object(self, pk):
         try:
@@ -210,17 +213,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pedido
 from .forms import PedidoForm
 
-        # Vista para mostrar la lista de pedidos
+# Vista para mostrar la lista de pedidos
 def lista_pedidos(request):
     pedidos = Pedido.objects.all()
     return render(request, 'lista_pedidos.html', {'pedidos': pedidos})
 
-        # Vista para ver los detalles de un pedido
+# Vista para ver los detalles de un pedido
 def detalle_pedido(request, pk):
     pedido = get_object_or_404(Pedido, pk=pk)
     return render(request, 'detalle_pedido.html', {'pedido': pedido})
 
-        # Vista para crear un nuevo pedido
+# Vista para crear un nuevo pedido
 def crear_pedido(request):
     if request.method == 'POST':
         form = PedidoForm(request.POST)
@@ -231,7 +234,7 @@ def crear_pedido(request):
         form = PedidoForm()
     return render(request, 'crear_pedido.html', {'form': form})
 
-        # Vista para actualizar un pedido existente
+# Vista para actualizar un pedido existente
 def actualizar_pedido(request, pk):
     pedido = get_object_or_404(Pedido, pk=pk)
     if request.method == 'POST':
@@ -243,7 +246,7 @@ def actualizar_pedido(request, pk):
         form = PedidoForm(instance=pedido)
     return render(request, 'actualizar_pedido.html', {'form': form})
 
-        # Vista para eliminar un pedido existente
+# Vista para eliminar un pedido existente
 def eliminar_pedido(request, pk):
     pedido = get_object_or_404(Pedido, pk=pk)
     if request.method == 'POST':
@@ -251,10 +254,7 @@ def eliminar_pedido(request, pk):
         return redirect('lista_pedidos')
     return render(request, 'eliminar_pedido.html', {'pedido': pedido})
 
-
-#------------------------------->>>>>>>>>>>>VISTAS INICIAL<<<<<<<<<-------------------------------------
-# Vista renderizada para template de index
-from django.shortcuts import render
-
+# ------------------------------->>>>>>>>>>>>VISTA INICIAL<<<<<<<<<-------------------------------------
+# Vista para renderizar el template de index
 def index(request):
     return render(request, 'index.html')

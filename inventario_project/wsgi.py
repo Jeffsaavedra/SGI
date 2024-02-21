@@ -1,9 +1,9 @@
 """
-WSGI config for inventario_project project.
+Configuración WSGI para el proyecto inventario_project.
 
-It exposes the WSGI callable as a module-level variable named ``application``.
+Expone el callable WSGI como una variable de nivel de módulo llamada `application`.
 
-For more information on this file, see
+Para obtener más información sobre este archivo, consulta:
 https://docs.djangoproject.com/en/5.0/howto/deployment/wsgi/
 """
 
@@ -11,6 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+# Establece la configuración de Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'inventario_project.settings')
 
+# Obtiene la aplicación WSGI
 application = get_wsgi_application()

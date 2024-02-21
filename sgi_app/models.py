@@ -1,7 +1,10 @@
 from django.db import models
 
-# Create your models here
+# Modelo para Proveedor
 class Proveedor(models.Model):
+    """
+    Modelo para representar un proveedor.
+    """
     nombre = models.CharField(max_length=100)
     direccion = models.CharField(max_length=200)
     telefono = models.CharField(max_length=15)
@@ -9,7 +12,11 @@ class Proveedor(models.Model):
     def __str__(self):
         return self.nombre
 
+# Modelo para Producto
 class Producto(models.Model):
+    """
+    Modelo para representar un producto.
+    """
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
     proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE)
@@ -20,6 +27,7 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre
 
+# Modelo para Pedido
 class Pedido(models.Model):
     """
     Modelo para representar pedidos de compra y venta.
