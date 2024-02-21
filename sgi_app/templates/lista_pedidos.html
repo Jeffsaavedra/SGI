@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pedidos</title>
+</head>
+<body>
+    <h1>Lista de Pedidos</h1>
+    <ul>
+        {% for pedido in pedidos %}
+            <li>{{ pedido }} <a href="{% url 'detalle_pedido' pk=pedido.pk %}">Detalle</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'crear_pedido' %}">Crear Pedido</a>
+</body>
+</html>

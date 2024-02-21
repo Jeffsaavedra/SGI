@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+</head>
+<body>
+    <h1>Detalle del Producto</h1>
+    <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
+    <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+    <p><strong>Proveedor:</strong> {{ producto.proveedor }}</p>
+    <p><strong>cantidad disponible:</strong> {{ producto.cantidad_disponible }}</p>
+    <p><strong>Precio unitario:</strong> {{ producto.precio_unitario }}</p>
+    <p><strong>Fecha de vencimiento:</strong> {{ producto.fecha_vencimiento }}</p>
+    <a href="{% url 'actualizar_producto' pk=producto.pk %}">Actualizar</a>
+    <a href="{% url 'eliminar_producto' pk=producto.pk %}">Eliminar</a>
+    <a href="{% url 'lista_productos' %}">Volver</a>
+</body>
+</html>

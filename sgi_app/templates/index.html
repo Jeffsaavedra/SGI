@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de inventarios - SGI APP</title>
+</head>
+<body>
+    <h1>Sistema de Gestión de inventarios - SGI APP</h1>
+    <p>¿Qué deseas gestionar?</p>
+    <div>
+        <a href="{% url 'lista_proveedores' %}">
+            <button>Proveedores</button>
+        </a>
+        <a href="{% url 'lista_productos' %}">
+            <button>Productos</button>
+        </a>
+        <a href="{% url 'lista_pedidos' %}">
+            <button>Pedidos</button>
+        </a>
+    </div>
+</body>
+</html>
