@@ -22,8 +22,8 @@ class ProductoAdmin(admin.ModelAdmin):
 admin.site.register(Producto, ProductoAdmin)
 
 class PedidoAdmin(admin.ModelAdmin):
-    list_display = ['producto', 'cantidad', 'fecha_pedido', 'fecha_entrega']
-    list_filter = ['fecha_pedido', 'fecha_entrega']
+    list_display = ['tipo','proveedor','producto', 'cantidad', 'fecha_pedido', 'fecha_entrega']
+    list_filter = ['fecha_pedido', 'fecha_entrega', 'tipo','proveedor']
     search_fields = ['producto__nombre']  # Buscar por nombre del producto
 
 admin.site.register(Pedido, PedidoAdmin)

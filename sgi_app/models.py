@@ -21,6 +21,16 @@ class Producto(models.Model):
         return self.nombre
 
 class Pedido(models.Model):
+    """
+    Modelo para representar pedidos de compra y venta.
+    """
+    TIPO_CHOICES = (
+        ('COMPRA', 'Compra'),
+        ('VENTA', 'Venta'),
+    )
+
+    tipo = models.CharField(max_length=6, choices=TIPO_CHOICES, null=True)
+    proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, null=True)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField()
     fecha_pedido = models.DateField(auto_now_add=True)
@@ -28,4 +38,3 @@ class Pedido(models.Model):
 
     def __str__(self):
         return f"Pedido de {self.producto.nombre} ({self.cantidad} unidades)"
-
