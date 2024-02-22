@@ -49,7 +49,7 @@ class ProveedorDetail(APIView):
         proveedor.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
-# Vistas renderizadas para templates de proveedor
+# Vistas renderizadas para templates de proveedor-------------------------------------------------------------------------
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Proveedor
@@ -123,7 +123,7 @@ class ProductoDetail(APIView):
         producto.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
-# Vistas renderizadas para templates de producto
+# Vistas renderizadas para templates de producto-------------------------------------------------------------------------
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto
@@ -208,7 +208,7 @@ class PedidoDetail(APIView):
         pedido.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
-# Vistas renderizadas para templates de pedidos
+# Vistas renderizadas para templates de pedidos-------------------------------------------------------------------------
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pedido
 from .forms import PedidoForm
