@@ -646,9 +646,9 @@ inventario_project/
 │   │   └── sgi_app/
 │   │       └── style.css
 │   ├── templates/
-│   │   ├── base.html
-│   │   └── post_list.html
-|   │   └── post_detail.html
+│   │   ├── nombre_template.html
+│   │   └── Nombre_template.html
+|   │   └── nombre_template.html
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
