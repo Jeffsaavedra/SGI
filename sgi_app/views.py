@@ -3,7 +3,6 @@ from django.shortcuts import render
 from rest_framework import generics
 from .models import Proveedor, Producto, Pedido
 from .serializers import ProveedorSerializer, ProductoSerializer, PedidoSerializer
-#from .permissions import IsAdminOrReadOnly
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -22,9 +21,11 @@ class ProveedorListCreate(generics.ListCreateAPIView):
 class ProveedorRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Proveedor.objects.all()
     serializer_class = ProveedorSerializer
+    permission_classes = [IsAuthenticated]
 
 # Vista para obtener detalles de un proveedor
 class ProveedorDetail(APIView):
+    permission_classes = [IsAuthenticated]
     def get_object(self, pk):
         try:
             return Proveedor.objects.get(pk=pk)
@@ -96,9 +97,11 @@ class ProductoListCreate(generics.ListCreateAPIView):
 class ProductoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
+    permission_classes = [IsAuthenticated]
 
 # Vista para obtener detalles de un producto
 class ProductoDetail(APIView):
+    permission_classes = [IsAuthenticated]
     def get_object(self, pk):
         try:
             return Producto.objects.get(pk=pk)
@@ -181,9 +184,11 @@ class PedidoListCreate(generics.ListCreateAPIView):
 class PedidoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Pedido.objects.all()
     serializer_class = PedidoSerializer
+    permission_classes = [IsAuthenticated]
 
 # Vista para obtener detalles de un pedido
 class PedidoDetail(APIView):
+    permission_classes = [IsAuthenticated]
     def get_object(self, pk):
         try:
             return Pedido.objects.get(pk=pk)
